@@ -46,7 +46,8 @@
   }
   .container-post {
     padding: 0 1.5rem;
-    margin-left: auto;
-    margin-right: auto;
+  }
+  .header-container {
+    top: 26% !important;
   }
 }

@@ -4,7 +4,7 @@ const BlogPostBig = ({ post }) => {
   return (
     <div
       // style={{ height: "100%" }}
-      class="w-full bg-white relative mb-8"
+      class="w-full bg-white relative md:mb-8 mb-3"
     >
       <div class="w-full ">
         <img class=" w-full h-full" src={post.img} alt="photo" />

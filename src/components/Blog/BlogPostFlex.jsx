@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const BlogPostFlex = ({ post, sidebar }) => {
   return (
-    <div class="w-full  overflow-hidden flex flex-col md:flex-row mb-8">
+    <div class="w-full  overflow-hidden flex flex-col md:flex-row md:mb-8 mb-3">
       <div class={`w-full md:w-2/5 ${sidebar ? "h-28" : "h-60"}`}>
         <img class="object-center object-cover w-full h-full" src={post.img} alt="photo" />
       </div>

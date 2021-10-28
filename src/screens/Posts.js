@@ -79,7 +79,7 @@ const Posts = () => {
         <div className="flex flex-col md:flex-row">
           <div className="w-full md:w-1/2 mx-2">
             <BlogPostBig post={posts[3]} />
-            <div className="bg-gray-100 dark:bg-gray-900 w-full h-40 mb-8 flex items-center justify-center px-6 leading-8">
+            <div className="bg-gray-100 dark:bg-gray-900 w-full h-40 md:mb-8 mb-3 flex items-center justify-center px-6 leading-8">
               <h2 className="text-lg uppercase font-normal text-center text-gray-700 dark:text-white">
                 Sign up for our weekly trips, articles & stories newsletter.
               </h2>
