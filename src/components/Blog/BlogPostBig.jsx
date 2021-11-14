@@ -4,15 +4,15 @@ const BlogPostBig = ({ post }) => {
   return (
     <div
       // style={{ height: "100%" }}
-      class="w-full bg-white relative md:mb-8 mb-3"
+      className="w-full bg-white relative md:mb-8 mb-3"
     >
-      <div class="w-full ">
-        <img class=" w-full h-full" src={post.img} alt="photo" />
+      <div className="w-full ">
+        <img className=" w-full h-full" src={post.img} alt="photo" />
       </div>
-      <div class="absolute md:bottom-0 bottom-10 w-full text-left p-6">
+      <div className="absolute md:bottom-0 bottom-10 w-full text-left p-6">
         <p
           style={{ lineHeight: 1.3 }}
-          class="text-2xl md:text-5xl cursor-pointer text-white w-full font-semibold capitalize transition-all hover:underline"
+          className="text-2xl md:text-5xl cursor-pointer text-white w-full font-semibold capitalize transition-all hover:underline"
         >
           {post.title}
         </p>

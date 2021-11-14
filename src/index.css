@@ -2,3 +2,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn {
+  @apply whitespace-nowrap flex items-center py-3 px-6 uppercase text-xs font-medium rounded-lg cursor-pointer transition-all text-center;
+}
+.btn-outline {
+  @apply inline-flex items-center px-4 py-2 border border-gray-300 rounded-sm  shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+.btn-green {
+  @apply btn; /*custom*/
+  @apply bg-green-500 text-white hover:bg-green-600;
+}
+
+.btn-primary {
+  @apply btn; /*custom*/
+  @apply bg-primary hover:bg-primaryd  text-white;
+}
+
+/* Inputs */
+.my-input {
+  @apply appearance-none text-xs block w-full dark:text-white text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-primary;
+}
+.my-label {
+  @apply block uppercase tracking-wide dark:text-white text-gray-600 text-xs font-normal mb-1.5;
+}

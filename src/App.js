@@ -5,6 +5,7 @@ import Home from "./screens/Home";
 import Posts from "./screens/Posts";
 import Post from "./screens/Post";
 import Navbar from "./components/Navbar/Navbar";
+import Login from "./screens/Login";
 
 function App() {
   const [darkMode, setdarkMode] = useState(false);
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/posts" component={Posts} />
           <Route exact path="/post/:id" component={Post} />
+          <Route exact path="/adminlogin" component={Login} />
         </div>
       </div>
     </Router>
