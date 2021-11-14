@@ -1,9 +1,9 @@
 import { useState } from "react";
-import BlogHeader from "../components/Blog/BlogHeader";
-import BlogLatest from "../components/Blog/BlogLatest";
-import BlogPostFlex from "../components/Blog/BlogPostFlex";
+import BlogHeader from "../../components/Blog/BlogHeader";
+import BlogLatest from "../../components/Blog/BlogLatest";
+import BlogPostFlex from "../../components/Blog/BlogPostFlex";
 import { BiChevronRight } from "react-icons/bi";
-import BlogPostBig from "../components/Blog/BlogPostBig";
+import BlogPostBig from "../../components/Blog/BlogPostBig";
 const Posts = () => {
   const [posts, setposts] = useState([
     {

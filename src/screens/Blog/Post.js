@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Single from "../components/Blog/Single";
+import Single from "../../components/Blog/Single";
 
 const Post = ({ match }) => {
   useEffect(() => {
