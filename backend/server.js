@@ -9,8 +9,11 @@ const helmet = require("helmet");
 
 const eventRoutes = require("./routes/eventRoutes");
 const blogRoutes = require("./routes/blogRoutes");
+const connectDB = require("./config/db");
 
 var app = express();
+
+connectDB();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
