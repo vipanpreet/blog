@@ -3,6 +3,8 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const dotenv = require("dotenv");
+
 const cors = require("cors");
 const passport = require("passport");
 const helmet = require("helmet");
@@ -11,6 +13,7 @@ const eventRoutes = require("./routes/eventRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 const connectDB = require("./config/db");
 
+dotenv.config();
 var app = express();
 
 connectDB();
