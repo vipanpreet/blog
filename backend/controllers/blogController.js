@@ -68,7 +68,7 @@ exports.updateBlog = async (req, res) => {
   }
 };
 
-exports.deleteEvent = async (req, res) => {
+exports.deleteBlog = async (req, res) => {
   try {
     res.status(200).json(await Blog.deleteOne({ _id: req.param.id }));
   } catch (error) {
