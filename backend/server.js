@@ -20,6 +20,7 @@ const PORT = process.env.PORT || 8080;
 dotenv.config();
 connectDB();
 
+app.use(cors());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -30,4 +31,8 @@ app.use("/api/event", eventRoutes);
 app.use("/api/blog", blogRoutes);
 app.use("/api/auth", authRoutes);
 
+const listEndpoints = require("express-list-endpoints");
+listEndpoints(app).map((aa) => {
+  console.log(aa.path, aa.methods);
+});
 httpServer.listen(PORT, () => console.log(`Server is Up on ${PORT}`));

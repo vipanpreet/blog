@@ -35,18 +35,16 @@ exports.loginUser = async (req, res) => {
       id: user.id,
     };
 
-    jwt.sign(payload, secret, { expiresIn: tokenExp }, (err, token) => {
-      res.status(200).json({
-        success: true,
-        token: `Bearer ${token}`,
-        id: user.id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        role: user.role,
-        isFirstTime: isFirstTime,
-        phoneNumber: user.phoneNumber,
-      });
+    let token = jwt.sign(payload, secret, { expiresIn: tokenExp });
+    res.status(200).json({
+      success: true,
+      token: `Bearer ${token}`,
+      id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      role: user.role,
+      phoneNumber: user.phoneNumber,
     });
   } catch (error) {
     console.error(error);

@@ -27,3 +27,18 @@
 .my-label {
   @apply block uppercase tracking-wide dark:text-white text-gray-600 text-xs font-normal mb-1.5;
 }
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.6rem;
+}
+h3 {
+  font-size: 1.4rem;
+}
+h4 {
+  font-size: 1.2rem;
+}
+h5 {
+  font-size: 1rem;
+}
