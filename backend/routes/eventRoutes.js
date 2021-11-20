@@ -11,12 +11,8 @@ const {
   monthlyEventList,
 } = require("../controllers/eventController.js");
 
-router.route("/").get(auth, eventList).post(auth, addEvent);
-router
-  .route("/single/:id")
-  .get(auth, getSingleEvent)
-  .post(auth, updateEvent)
-  .delete(auth, deleteEvent);
+router.route("/").get(eventList).post(auth, addEvent);
+router.route("/single/:id").get(getSingleEvent).post(auth, updateEvent).delete(auth, deleteEvent);
 
 router.route("/monthly").get(auth, monthlyEventList);
 

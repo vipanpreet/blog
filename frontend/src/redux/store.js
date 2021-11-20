@@ -4,10 +4,14 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import { postsReducer } from "./posts/postsReducer";
 import { userLoginReducer } from "./user/userReducer";
+import { eventsReducer } from "./events/eventsReducer";
+import { alertReducer } from "./Alert/alertReducer";
 
 const rootReducer = combineReducers({
+  alertShow: alertReducer,
   postsState: postsReducer,
   auth: userLoginReducer,
+  eventsState: eventsReducer,
 });
 
 const middleware = [thunk];

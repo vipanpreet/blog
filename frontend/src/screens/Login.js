@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import { useSelector, useDispatch } from "react-redux";
 import { InputField } from "../components/reusables/InputField/InputField";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { login } from "../redux/user/userActions";
 
 const Login = () => {
@@ -27,7 +27,7 @@ const Login = () => {
         <div className="font-bold dark:text-white text-gray-700 text-2xl">Log in</div>
         {/* <p className="text-gray-400">Login with data you entered while registering on website</p> */}
         {errorLogin && <p className="text-red-500">{errorLogin}</p>}
-        {userInfo && <Redirect to="/" />}
+        {userInfo && <Navigate to="/" />}
         <Formik
           initialValues={{
             email: "",

@@ -1,7 +1,6 @@
-import React from "react";
 import CreatePost from "../../components/admin/CreatePost";
 
-const Create = () => {
+const DCreateBlog = () => {
   return (
     <div className="container bg-white">
       <CreatePost />
@@ -9,4 +8,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default DCreateBlog;

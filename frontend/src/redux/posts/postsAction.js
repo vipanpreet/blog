@@ -10,6 +10,9 @@ import {
   CREATE_POST_FAIL,
   CREATE_POST_REQUEST,
   CREATE_POST_SUCCESS,
+  UPDATE_POST_FAIL,
+  UPDATE_POST_REQUEST,
+  UPDATE_POST_SUCCESS,
 } from "./postsTypes";
 import { setAlert, removeAlert } from "../Alert/alertActions";
 
@@ -29,19 +32,19 @@ export const getSinglePost = (id) => async (dispatch) => {
   try {
     dispatch({ type: GET_POST_REQUEST });
 
-    const { data } = await axios.get(`${BACK_URI}/api/blog/${id}`);
+    const { data } = await axios.get(`${BACK_URI}/api/blog/single/${id}`);
     dispatch({ type: GET_POST_SUCCESS, payload: data });
   } catch (error) {
     console.log(error);
     dispatch({ type: GET_POST_FAIL, payload: error });
   }
 };
+
 export const createPostAction = (body) => async (dispatch, getState) => {
   const {
     auth: { userInfo },
   } = getState();
 
-  console.log(userInfo);
   try {
     dispatch(setAlert("Adding Post", "loading"));
 
@@ -59,6 +62,32 @@ export const createPostAction = (body) => async (dispatch, getState) => {
   } catch (error) {
     console.log(error);
     dispatch({ type: CREATE_POST_FAIL, payload: error });
+    dispatch(removeAlert());
+  }
+};
+
+export const updatePostAction = (id, body) => async (dispatch, getState) => {
+  const {
+    auth: { userInfo },
+  } = getState();
+
+  try {
+    dispatch(setAlert("Update Post", "loading"));
+
+    dispatch({ type: UPDATE_POST_REQUEST });
+
+    const config = {
+      headers: {
+        Authorization: userInfo.token,
+      },
+    };
+
+    const { data } = await axios.post(`${BACK_URI}/api/blog/single/${id}`, body, config);
+    dispatch({ type: UPDATE_POST_SUCCESS, payload: data });
+    dispatch(setAlert("Updated", "success", 3000));
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: UPDATE_POST_FAIL, payload: error });
     dispatch(removeAlert());
   }
 };

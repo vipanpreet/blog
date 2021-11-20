@@ -3,7 +3,7 @@ import moment from "moment";
 import { BiChevronLeft, BiChevronRight, BiX } from "react-icons/bi";
 import Card from "./Card";
 
-const Calender = () => {
+const Calender = ({ events }) => {
   const [currentMonth, setcurrentMonth] = useState(new Date());
   const [selectedDate, setselectedDate] = useState(new Date());
   const [open, setopen] = useState();
@@ -179,6 +179,9 @@ const Calender = () => {
             key={day}
           >
             <div className={`mt-12 relative`}>
+              {/* {events?.map((ev) => (
+                <div>{ev.name}</div>
+              ))} */}
               {data.map(
                 (event) =>
                   moment(event.date).date() == moment(day).date() && (

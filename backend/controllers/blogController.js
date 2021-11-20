@@ -10,12 +10,12 @@ exports.blogList = async (req, res) => {
     // repetitiontype && (query.repetitionType = repetitiontype);
     sort[String(sortby)] = sortdirection;
 
-    const blogs = await Event.find({})
+    const blogs = await Blog.find({})
       .sort(sort)
       .limit(Number(pagesize))
       .skip(pagesize * (pagenumber - 1));
 
-    const totalBlogsCount = await Customer.countDocuments({});
+    const totalBlogsCount = await Blog.countDocuments({});
 
     return res.status(200).json({
       blogs,
@@ -48,7 +48,7 @@ exports.getSingleBlog = async (req, res) => {
       .status(200)
       .json(
         await Blog.findOneAndUpdate(
-          { _id: req.param.id },
+          { _id: req.params.id },
           { $inc: { viewCount: 1 } },
           { new: true }
         )
@@ -61,7 +61,7 @@ exports.getSingleBlog = async (req, res) => {
 
 exports.updateBlog = async (req, res) => {
   try {
-    res.status(200).json(await Blog.updateOne({ _id: req.param.id }, req.body));
+    res.status(200).json(await Blog.updateOne({ _id: req.params.id }, req.body));
   } catch (error) {
     console.error(error);
     return res.status(500).json({ msg: "Error while updating blog." });
@@ -70,7 +70,7 @@ exports.updateBlog = async (req, res) => {
 
 exports.deleteBlog = async (req, res) => {
   try {
-    res.status(200).json(await Blog.deleteOne({ _id: req.param.id }));
+    res.status(200).json(await Blog.deleteOne({ _id: req.params.id }));
   } catch (error) {
     console.error(error);
     return res.status(500).json({ msg: "Error while deleting blog." });

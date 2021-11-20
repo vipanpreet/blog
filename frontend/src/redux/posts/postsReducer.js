@@ -8,6 +8,7 @@ import {
   CREATE_POST_FAIL,
   CREATE_POST_REQUEST,
   CREATE_POST_SUCCESS,
+  GET_POST_RESET,
 } from "./postsTypes";
 
 export const postsReducer = (state = {}, action) => {
@@ -17,7 +18,7 @@ export const postsReducer = (state = {}, action) => {
       return { ...state, loading: true };
 
     case GET_POSTS_SUCCESS:
-      return { ...state, loading: false, posts: action.payload };
+      return { ...state, loading: false, posts: action.payload.blogs };
 
     case GET_POSTS_FAIL:
       return { ...state, loading: false, error: action.payload };
@@ -31,6 +32,9 @@ export const postsReducer = (state = {}, action) => {
 
     case GET_POST_FAIL:
       return { ...state, loading: false, error: action.payload };
+
+    case GET_POST_RESET:
+      return { ...state, loading: false, singlePost: {} };
 
     // create
     case CREATE_POST_REQUEST:

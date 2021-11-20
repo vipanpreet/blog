@@ -10,11 +10,7 @@ const {
   deleteBlog,
 } = require("../controllers/blogController.js");
 
-router.route("/").get(auth, blogList).post(auth, addBlog);
-router
-  .route("/single/:id")
-  .get(auth, getSingleBlog)
-  .post(auth, updateBlog)
-  .delete(auth, deleteBlog);
+router.route("/").get(blogList).post(auth, addBlog);
+router.route("/single/:id").get(getSingleBlog).post(auth, updateBlog).delete(auth, deleteBlog);
 
 module.exports = router;

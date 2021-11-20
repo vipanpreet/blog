@@ -22,7 +22,7 @@ exports.eventList = async (req, res) => {
       .limit(Number(pagesize))
       .skip(pagesize * (pagenumber - 1));
 
-    const totalEventsCount = await Customer.countDocuments(query);
+    const totalEventsCount = await Event.countDocuments(query);
 
     return res.status(200).json({
       events,
@@ -51,7 +51,7 @@ exports.addEvent = async (req, res) => {
 
 exports.getSingleEvent = async (req, res) => {
   try {
-    res.status(200).json(await Event.findById(req.param.id));
+    res.status(200).json(await Event.findById(req.params.id));
   } catch (error) {
     console.error(error);
     return res.status(500).json({ msg: "Error while fetching event." });
@@ -60,7 +60,7 @@ exports.getSingleEvent = async (req, res) => {
 
 exports.updateEvent = async (req, res) => {
   try {
-    res.status(200).json(await Event.updateOne({ _id: req.param.id }, req.body));
+    res.status(200).json(await Event.updateOne({ _id: req.params.id }, req.body));
   } catch (error) {
     console.error(error);
     return res.status(500).json({ msg: "Error while updating event." });
@@ -69,7 +69,7 @@ exports.updateEvent = async (req, res) => {
 
 exports.deleteEvent = async (req, res) => {
   try {
-    res.status(200).json(await Event.deleteOne({ _id: req.param.id }));
+    res.status(200).json(await Event.deleteOne({ _id: req.params.id }));
   } catch (error) {
     console.error(error);
     return res.status(500).json({ msg: "Error while deleting event." });
