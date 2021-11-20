@@ -15,8 +15,6 @@ const connectDB = require("./config/db");
 
 const app = express();
 
-const httpServer = require("http").createServer(app);
-
 const PORT = process.env.PORT || 8080;
 
 dotenv.config();
@@ -39,4 +37,4 @@ const listEndpoints = require("express-list-endpoints");
 listEndpoints(app).map((aa) => {
   console.log(aa.path, aa.methods);
 });
-httpServer.listen(PORT, () => console.log(`Server is Up on ${PORT}`));
+app.listen(PORT, () => console.log(`Server is Up on ${PORT}`));
