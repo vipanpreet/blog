@@ -3,7 +3,6 @@ const AWS = require("aws-sdk");
 const multer = require("multer");
 const multerS3 = require("multer-s3");
 const { v4: uuidv4 } = require("uuid");
-const crypto = require("crypto");
 
 // importing keys
 const keys = require("../config/keys");
@@ -16,7 +15,7 @@ let s3 = new AWS.S3({
   region: region,
 });
 
-var multiUpload = multer({
+var upload = multer({
   storage: multerS3({
     s3,
     bucket,
@@ -25,49 +24,30 @@ var multiUpload = multer({
       cb(null, { fieldName: file.fieldname });
     },
     key: function (req, file, cb) {
-      let customFileName = crypto.randomBytes(12).toString("hex");
-      cb(
-        null,
-        folderName + "/" + req.randomName + customFileName + path.extname(file.originalname)
-      );
+      cb(null, folderName + "/" + req.randomName + path.extname(file.originalname));
     },
   }),
-}).array("photos", 5);
+});
 
-exports.uploadPostImages = async (req, res) => {
+// Single file upload settings
+const singleFileUpload = upload.single("image");
+
+exports.uploadImage = async (req, res) => {
   req.randomName = uuidv4();
-  multiUpload(req, res, (error) => {
-    console.log("files", req.files);
-    if (error) {
-      console.log("errors", error);
-      res.status(500).json({
-        status: "fail",
-        error: error,
-      });
-    } else {
-      // If File not found
-      if (req.files === undefined) {
-        console.log("msg: No File Selected!");
-        res.status(500).json({
-          msg: "failed to upload images",
-        });
-      } else {
-        // If Success
-        let fileArray = req.files;
 
-        const images = [];
-        let url,
-          public_id,
-          id = "";
-        for (let i = 0; i < fileArray.length; i++) {
-          url = fileArray[i].location;
-          public_id = fileArray[i].key;
-          id = i;
-          images.push({ url, public_id, id });
-        }
-
-        return res.status(200).json(({ url, public_id, id } = images));
+  try {
+    singleFileUpload(req, res, function (err) {
+      if (err instanceof multer.MulterError) {
+        console.log(err);
+      } else if (err) {
+        console.log(err);
       }
-    }
-  });
+      res.json({
+        public_id: req.file.key,
+        url: req.file.location,
+      });
+    });
+  } catch (error) {
+    console.error(error);
+  }
 };

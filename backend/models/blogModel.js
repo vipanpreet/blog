@@ -27,6 +27,7 @@ const blogSchema = mongoose.Schema(
     images: {
       type: Array,
     },
+    featureImage: String,
     isDraft: {
       type: Boolean,
       default: true,

@@ -3,7 +3,7 @@ import CreatePost from "../../components/admin/CreatePost";
 
 const Create = () => {
   return (
-    <div>
+    <div className="container bg-white">
       <CreatePost />
     </div>
   );
